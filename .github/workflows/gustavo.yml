@@ -1,0 +1,23 @@
+name: Gustavo
+
+on:
+  pull_request: {}
+  push:
+    branches: master
+    tags: "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Run Tests
+        run: |
+          auto/test
+
