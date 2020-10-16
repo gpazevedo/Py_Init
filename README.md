@@ -1,4 +1,7 @@
-# ETL Covid
+# Starter Python Project
+
+This is a starter Python repo, for a dockerized cloud Python application, using Git Actions for Continuos Integration.
+It uses docker-compose with a PostgreSQL service container.
 
 ## Setup
 ```sh
@@ -28,7 +31,7 @@ py.test
 #### Run
 ```sh
 # Executes the module with argument 5
-python -m etl_covid 5
+python -m py_start 5
 ```
 
 ### Container
@@ -49,10 +52,10 @@ docker-compose build
 
 #### Test
 ```sh
-docker-compose run --service-ports --rm test
+docker-compose run --service-ports --rm test 5
 ```
 
 #### Run
 ```sh
-docker-compose run --service-ports --rm dev
+docker-compose run --service-ports --rm dev 5
 ```

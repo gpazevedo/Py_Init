@@ -1,6 +1,6 @@
 [run]
-source = etl_covid
-omit = etl_covid/__main__.py
+source = py_start
+omit = py_start/__main__.py
 
 [report]
 exclude_lines =

@@ -33,5 +33,5 @@ USER appuser
 COPY . .
 
 # Run the executable
-ENTRYPOINT ["python", "-m", "etl_covid"]
+ENTRYPOINT ["python", "-m", "py_start"]
 CMD ["10"]

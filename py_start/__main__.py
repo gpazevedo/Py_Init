@@ -1,7 +1,7 @@
 import os
 import sys
 
-from etl_covid.etl_covid import fib
+from py_start.py_start import fib
 
 if __name__ == "__main__":
     runtime_env = os.environ.get("RUNTIME_ENV")

@@ -1,4 +1,4 @@
-from etl_covid.etl_covid import fib
+from py_start.py_start import fib
 
 
 def test_fib() -> None:
