@@ -4,7 +4,7 @@ services:
   base:
     build: .
     volumes:
-      - .:/app
+      - .:/home/appuser
     environment:
       - AWS_REGION=ap-southeast-2
       - AWS_DEFAULT_REGION=ap-southeast-2
@@ -20,6 +20,20 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      environment:
+        - RUNTIME_ENV=dev
+
+  test:
+    extends:
+      file: docker-compose.yml
+      service: base
+    depends_on:
+      db:
+        condition: service_healthy
+    command: py.test
+    environment:
+      - RUNTIME_ENV=test
+
 
   # See: https://github.com/docker/compose/issues/4369
   healthy_db_container:

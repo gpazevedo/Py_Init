@@ -9,14 +9,22 @@ pipenv install --dev
 pipenv run pre-commit install -t pre-commit
 pipenv run pre-commit install -t pre-push
 ```
-## Test
+
+## Workflows
+
+### Local Development
+
+#### Test
 ```sh
 # Executes all the tests
 py.test
 ```
 
-## Run
+#### Run
 ```sh
 # Executes the module with argument 5
 python -m etl_covid 5
 ```
+
+
+### Continuos Integration
