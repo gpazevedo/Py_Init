@@ -1,5 +1,4 @@
 #!/bin/bash
 
-sudo apt install pipenv
 pipenv install
 pipenv run python3 -m etl_covid $1
