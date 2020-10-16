@@ -1,0 +1,44 @@
+version: '2.1'
+
+services:
+  base:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - AWS_REGION=ap-southeast-2
+      - AWS_DEFAULT_REGION=ap-southeast-2
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_SESSION_TOKEN
+      - TIMEZONE=America/Sao_Paulo
+
+  dev:
+    extends:
+      file: docker-compose.yml
+      service: base
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # See: https://github.com/docker/compose/issues/4369
+  healthy_db_container:
+    image: busybox
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 3
