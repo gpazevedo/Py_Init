@@ -2,6 +2,9 @@
 
 ## Setup
 ```sh
+# Start a clean python environment
+pipenv shell
+
 # Install dependencies
 pipenv install --dev
 
@@ -12,7 +15,9 @@ pipenv run pre-commit install -t pre-push
 
 ## Workflows
 
-### Local Development
+### Local
+
+Running directly in the development computer.
 
 #### Test
 ```sh
@@ -26,5 +31,28 @@ py.test
 python -m etl_covid 5
 ```
 
+### Container
 
-### Continuos Integration
+Running using containers in the development computer.
+
+<!--
+#### Run only the database server
+```sh
+docker-compose run --service-ports --rm db
+```
+-->
+#### Buid Image
+```sh
+# Builds the application docker images
+docker-compose build
+```
+
+#### Test
+```sh
+docker-compose run --service-ports --rm test
+```
+
+#### Run
+```sh
+docker-compose run --service-ports --rm dev
+```
