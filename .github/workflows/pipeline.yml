@@ -21,7 +21,6 @@ jobs:
       - name: Run Tests
         run:  auto/test
 
-
   execute:
     runs-on: ubuntu-latest
     steps:
@@ -38,5 +37,5 @@ jobs:
           pipenv install --deploy
 
       - name: Run
-        run:  auto/run
+        run:  auto/run 5
 
